@@ -22,10 +22,31 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-left: 4rem;
+  margin-right: 4rem;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 600px) {
+  main {
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-bottom: 1rem;
+  }
 }
 
 img {
   display: block;
+}
+
+.d-none {
+  display: none;
+}
+
+input {
+  height: 1.25rem;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, .1);
 }
 
 a {
@@ -113,6 +134,7 @@ nav a {
 .search-form {
   width: min(500px, calc(100vw - 4rem));
   display: flex;
+  margin-bottom: 0;
 }
 
 input[type="search"] {
@@ -135,7 +157,7 @@ input[type="search"]:focus {
 
 @media (max-width: 600px) {
   .search-form {
-    margin-top: 1.5em;
+    margin-top: 1.15rem;
   }
   #searchbutton {
     padding-right: 1em;
@@ -155,17 +177,15 @@ input[type="search"]:focus {
 .search-info {
   font-weight: bold;
   font-size: 1.5rem;
-  margin-top: 3rem;
-  margin-bottom: 3rem;
-  padding: 0 2rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  line-height: 1.2;
   text-align: center;
 }
 
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fill, 300px);
-  padding-left: 4rem;
-  padding-right: 4rem;
   margin: 0 auto;
   max-width: calc(100vw - 8rem);
   gap: 50px;
@@ -258,7 +278,6 @@ input[type="search"]:focus {
   width: 400px;
   padding: 0;
   background-color: white;
-  margin-bottom: 2rem;
   box-shadow: 2px 2px 3px rgba(0, 0,0, .5);
 }
 
@@ -569,7 +588,10 @@ input[type="range"]:focus {
 /*****************************************************************************
   Cart
  *****************************************************************************/
-
+#cart {
+  display: flex;
+  flex-direction: column;
+}
 
 .cart-preview {
   display: flex;
@@ -581,23 +603,56 @@ input[type="range"]:focus {
   flex-shrink: 0;
 }
 
+.cart-preview a {
+  box-shadow: 7px 7px 15px rgba(0, 0, 0, .5);
+}
+
 .cart-preview img {
   border: 0px solid black; /* necessary for Chrome & Firefox */
+}
+
+.cart-item {
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: row;
 }
 
 .cart-item .museum-label {
   flex-grow: 1;
   max-width: 500px;
+  position: relative;
+  display: inline-block;
+  height: fit-content;
+  margin: auto 0;
+  margin-left: 3rem;
+  padding: 1rem;
+  background-color: var(--label-color);
+  box-shadow: 2px 2px 3px rgba(0, 0,0, .5);
+}
+.cart-item .museum-label .title {
+  font-style: italic;
+}
+.cart-item .museum-label .artist {
+  font-weight: bold;
+  display: block;
 }
 
 .cart-item .museum-label .price {
   font-weight: bold;
   text-align: right;
   margin-top: 1rem;
+  display: block;
 }
 
 .cart-remove {
   border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: block;
+  position: absolute;
+  top: -0.75rem;
+  right: -0.75rem;
+  padding: 0;
 }
 
 .cart-remove::before {
@@ -610,17 +665,31 @@ input[type="range"]:focus {
   font-size: 1.5rem;
   font-weight: bold;
   margin: 1rem;
+  margin-right: 0;
 }
 
 .cart-checkout {
   align-self: flex-end;
   margin: 1rem;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+@media (max-width: 800px) {
+  #cart {
+    padding: 0 1rem;
+  }
 }
 
 @media (max-width: 600px) {
   .cart-item {
     flex-direction: column;
     gap: 2rem;
+    align-items: center;
+  }
+
+  .cart-item .museum-label {
+    margin-left: 0;
   }
 
   .cart-preview {
