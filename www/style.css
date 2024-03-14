@@ -1,9 +1,12 @@
 /*****************************************************************************
-  Common Elements 
+  Common Elements
  *****************************************************************************/
 
 :root {
   --serif-font: Palatino, "Palatino Linotype", "URW Palladio L", serif;
+  --primary-color: #222c2e;
+  --background-color: #edf2f1;
+  --label-color: #fff;
 }
 
 body {
@@ -12,6 +15,7 @@ body {
   line-height: 1.2rem;
   height: 100%;
   margin: 0;
+  background-color: var(--background-color);
 }
 
 main {
@@ -24,12 +28,39 @@ img {
   display: block;
 }
 
+a {
+  text-decoration: none;
+  color: var(--primary-color);
+}
 
+a:visited {
+  color: var(--primary-color);
+}
 
 /* Buttons *******************************************************************/
 
 button {
   cursor: pointer;
+  border-radius: 0;
+  border-color: transparent;
+  background-color: var(--primary-color);
+  color: var(--label-color);
+  height: 2.5em;
+  padding-left: 2em;
+  padding-right: 2em;
+  font-family: var(--serif-font);
+  font-size: 100%;
+  /*
+  todo mobile
+   */
+}
+
+button:hover {
+  opacity: .9;
+}
+
+button:active {
+  transform: scale(0.95);
 }
 
 
@@ -66,7 +97,7 @@ nav a {
 @media (max-width: 600px) {
   header {
     font-size: 1rem;
-    height: 2rem;    
+    height: 2rem;
   }
 
   nav a:hover {
@@ -80,7 +111,8 @@ nav a {
  *****************************************************************************/
 
 .search-form {
-  width: 500px;
+  width: min(500px, calc(100vw - 4rem));
+  display: flex;
 }
 
 input[type="search"] {
@@ -93,11 +125,22 @@ input[type="search"] {
   font-family: inherit;
   font-size: 1em;
   height: 2.5rem;
-  width: 100%;
+  flex-grow: 1;
+  outline: rgba(0, 0, 0, .1) 1px solid;
 }
 
 input[type="search"]:focus {
   outline: none;
+}
+
+@media (max-width: 600px) {
+  .search-form {
+    margin-top: 1.5em;
+  }
+  #searchbutton {
+    padding-right: 1em;
+    padding-left: 1em;
+  }
 }
 
 ::placeholder {
@@ -112,22 +155,56 @@ input[type="search"]:focus {
 .search-info {
   font-weight: bold;
   font-size: 1.5rem;
-  line-height: 1.8rem;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  padding: 0 2rem;
+  text-align: center;
 }
 
 .gallery {
-  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 300px);
+  padding-left: 4rem;
+  padding-right: 4rem;
+  margin: 0 auto;
+  max-width: calc(100vw - 8rem);
+  gap: 50px;
 }
 
 .thumb {
   width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
+}
+.thumb a {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .thumb img {
   max-width: 300px;
   max-height: 300px;
   transition: all 0.5s;
+  box-shadow: 7px 7px 15px rgba(0, 0, 0, .5);
+}
+
+.gallery .museum-label {
+  margin-top: 1rem;
+  background-color: white;
+  padding: 1rem;
+  box-shadow: 2px 2px 3px rgba(0, 0,0, .5);
+}
+
+.gallery .museum-label .title {
+  font-style: italic;
+}
+.gallery .museum-label .artist {
+  font-weight: bold;
+  display: block;
 }
 
 
@@ -150,22 +227,39 @@ input[type="search"]:focus {
   align-items: center;
   max-width: 500px;
   max-height: 500px;
+
   min-width: 250px;
-  flex: 1 1 250px;
   margin: 2rem 4rem;
+  flex-wrap: wrap;
 }
 
 .framing-preview img {
   border: 0px solid black; /* necessary for Chrome & Firefox */
+  box-shadow: 7px 7px 15px rgba(0, 0, 0, .5);
 }
 
 .framing-preview .museum-label {
   margin-top: 1rem;
+  background-color: white;
+  display: block;
+  padding: 1rem;
+  box-shadow: 2px 2px 3px rgba(0, 0,0, .5);
+}
+
+.framing-preview .museum-label .title {
+  font-style: italic;
+}
+.framing-preview .museum-label .artist {
+  font-weight: bold;
+  display: block;
 }
 
 .framing-form {
   width: 400px;
   padding: 0;
+  background-color: white;
+  margin-bottom: 2rem;
+  box-shadow: 2px 2px 3px rgba(0, 0,0, .5);
 }
 
 .framing-form fieldset {
@@ -182,6 +276,15 @@ input[type="search"]:focus {
   flex-direction: column;
 }
 
+.framing-form .num {
+  display: flex;
+}
+.framing-form .num input {
+  margin-left: auto;
+  background-color: var(--background-color);
+  padding: 3px;
+}
+
 /* legend is necessary for accessibility, but we don't want to show it */
 .framing-form fieldset legend {
   position: absolute;
@@ -195,6 +298,12 @@ input[type="search"]:focus {
   line-height: 1.5em;
 }
 
+.framing-form .price {
+  font-weight: bold;
+  text-align: right;
+  font-size: 1.5rem;
+}
+
 .framing-form button.buy {
   margin-top: 0.5em;
   width: 100%;
@@ -205,7 +314,7 @@ input[type="search"]:focus {
     flex-direction: column;
     margin: 0;
   }
-  
+
   .preview {
     width: 90%;
     flex: 0 0 auto;
@@ -617,7 +726,7 @@ select {
   line-height: 1.25rem;
   height: 1.75rem;
   padding: 3px;
-  text-indent: 1.25px;  
+  text-indent: 1.25px;
 	box-sizing: border-box;
   border: 1px solid rgba(0, 0, 0, 0.1);
 	-moz-appearance: none;

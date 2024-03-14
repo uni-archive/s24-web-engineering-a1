@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
@@ -31,6 +32,7 @@
       <img src="artmart_logo.png" alt="Artmart" class="logo">
     </a>
     <nav>
+      <a href="search.html">Search</a><a href="cart.html">Cart (2)</a>
     </nav>
   </header>
 
@@ -40,10 +42,12 @@
       <div class="sample-wrapper">
         <img id="preview-image" src="met-objects/DP141042.jpg" alt="" class="sample-frame">
       </div>
-        Katsushika Hokusai
-        Under the Wave off Kanagawa (Kanagawa oki nami ura), or The Great Wave, from the series
-          Thirty-six Views of Mount Fuji (Fugaku sanjūrokkei),
-        ca. 1830–32
+      <div class="museum-label">
+        <span class="artist">Katsushika Hokusai</span>
+        <span class="title">Under the Wave off Kanagawa (Kanagawa oki nami ura), or The Great Wave, from the series
+          Thirty-six Views of Mount Fuji (Fugaku sanjūrokkei)</span>,
+        <span class="date">ca. 1830–32</span>
+      </div>
     </div>
 
     <form id="framing-form" class="framing-form museum-label" action="cart.html">
@@ -58,6 +62,20 @@
           <input type="radio" name="print-size" id="print-size-l" value="L" checked>
           <label for="print-size-l" id="print-size-l-label">Large<br>59.4 × 40.5 cm</label>
         </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Frame Width</legend>
+        <div>
+          <div class="num">
+            <label for="frame-width">Frame</label>
+            <label for="frame-num" style="display: none">a</label>
+            <input id="frame-num" type="number" min="2" max="5" value="2" name="x">
+            <span> cm</span>
+          </div>
+        </div>
+        <input id="frame-width" type="range" min="2" max="5" value="2" step="0.1">
+
       </fieldset>
 
       <fieldset>
@@ -80,6 +98,20 @@
             <label for="frame-style-elegant"><img src="frame-styles/elegant-thumb.png" alt="Elegant">Elegant</label>
           </div>
         </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Mat</legend>
+        <div>
+          <div class="num">
+            <label for="mat">Mat</label>
+            <label for="mat-num" style="display: none">a</label>
+            <input id="mat-num" type="number" min="0" max="10" value="3" name="x">
+            <span> cm</span>
+          </div>
+        </div>
+        <input id="mat" type="range" min="0" max="10" value="3" step="0.1">
+
       </fieldset>
 
       <fieldset>
