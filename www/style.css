@@ -58,6 +58,10 @@ a:visited {
   color: var(--primary-color);
 }
 
+.text-bold {
+  font-weight: bold;
+}
+
 /* Buttons *******************************************************************/
 
 button {
